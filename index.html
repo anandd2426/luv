@@ -1,226 +1,296 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>I Love You Loader</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 50px;
-            background: #0a0a0a;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I LOVE YOU RAKSHA</title>
 
-        .absolute {
-            position: absolute;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        .inline-block {
-            display: inline-block;
-        }
+body{
+    background:#000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    font-family:Arial, Helvetica, sans-serif;
+}
 
-        .loader {
-            display: flex;
-            margin: 0.25em 0;
-            align-items: center;
-        }
+.container{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
 
-        .w-2 {
-            width: 0.5em;
-        }
+.loader{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    margin-bottom:25px;
+}
 
-        .dash {
-            animation: dashArray 2s ease-in-out infinite,
-                dashOffset 2s linear infinite;
-        }
+.raksha{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+}
 
-        .spin {
-            animation: spinDashArray 2s ease-in-out infinite,
-                spin 8s ease-in-out infinite,
-                dashOffset 2s linear infinite;
-            transform-origin: center;
-        }
+svg{
+    width:70px;
+    height:70px;
+}
 
-        @keyframes dashArray {
-            0% {
-                stroke-dasharray: 0 1 359 0;
-            }
-            50% {
-                stroke-dasharray: 0 359 1 0;
-            }
-            100% {
-                stroke-dasharray: 359 1 0 0;
-            }
-        }
+.w-2{
+    width:8px;
+}
 
-        @keyframes spinDashArray {
-            0% {
-                stroke-dasharray: 270 90;
-            }
-            50% {
-                stroke-dasharray: 0 360;
-            }
-            100% {
-                stroke-dasharray: 270 90;
-            }
-        }
+.dash{
+    animation:
+        dashArray 3s ease-in-out infinite,
+        dashOffset 3s linear infinite;
+}
 
-        @keyframes dashOffset {
-            0% {
-                stroke-dashoffset: 365;
-            }
-            100% {
-                stroke-dashoffset: 5;
-            }
-        }
+.spin{
+    animation:
+        spinDashArray 2s ease-in-out infinite,
+        spin 8s ease-in-out infinite,
+        dashOffset 2s linear infinite;
+    transform-origin:center;
+}
 
-        @keyframes spin {
-            0% {
-                rotate: 0deg;
-            }
-            12.5%,
-            25% {
-                rotate: 270deg;
-            }
-            37.5%,
-            50% {
-                rotate: 540deg;
-            }
-            62.5%,
-            75% {
-                rotate: 810deg;
-            }
-            87.5%,
-            100% {
-                rotate: 1080deg;
-            }
-        }
+@keyframes dashArray{
+    0%{stroke-dasharray:0 1 359 0;}
+    50%{stroke-dasharray:0 359 1 0;}
+    100%{stroke-dasharray:359 1 0 0;}
+}
 
-        .letter-i {
-            font-size: 64px;
-            font-weight: bold;
-            background: linear-gradient(45deg, #973BED, #007CFF);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            position: relative;
-        }
+@keyframes spinDashArray{
+    0%{stroke-dasharray:270 90;}
+    50%{stroke-dasharray:0 360;}
+    100%{stroke-dasharray:270 90;}
+}
 
-        .letter-i::after {
-            content: "I";
-            position: absolute;
-            top: 0;
-            left: 0;
-            background: linear-gradient(45deg, #973BED, #007CFF);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: dashArray 2s ease-in-out infinite, dashOffset 2s linear infinite;
-            background-size: 400% 400%;
-        }
+@keyframes dashOffset{
+    0%{stroke-dashoffset:365;}
+    100%{stroke-dashoffset:5;}
+}
 
-        .letter-love {
-            font-size: 64px;
-            font-weight: bold;
-            background: linear-gradient(45deg, #FFC800, #F0F);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            position: relative;
-        }
+@keyframes spin{
+    0%{transform:rotate(0deg);}
+    25%{transform:rotate(270deg);}
+    50%{transform:rotate(540deg);}
+    75%{transform:rotate(810deg);}
+    100%{transform:rotate(1080deg);}
+}
 
-        .letter-love::after {
-            content: "LOVE";
-            position: absolute;
-            top: 0;
-            left: 0;
-            background: linear-gradient(45deg, #FFC800, #F0F);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: dashArray 2s ease-in-out infinite, dashOffset 2s linear infinite;
-            background-size: 400% 400%;
-        }
-    </style>
+/* Text */
+
+.letter-i,
+.letter-love{
+    font-size:65px;
+    font-weight:bold;
+    background-size:300% 300%;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:gradientMove 4s linear infinite;
+}
+
+.letter-i{
+    background-image:linear-gradient(45deg,#973BED,#007CFF);
+}
+
+.letter-love{
+    background-image:linear-gradient(45deg,#FFC800,#ff00ff);
+}
+
+@keyframes gradientMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+</style>
 </head>
+
 <body>
+
+<div class="container">
+
+    <!-- I LOVE YOU -->
     <div class="loader">
+
         <span class="letter-i">I</span>
+
         <div class="w-2"></div>
+
         <span class="letter-love">LOVE</span>
+
         <div class="w-2"></div>
-        
-        <svg height="0" width="0" viewBox="0 0 64 64" class="absolute">
-            <defs class="s-xJBuHA073rTt" xmlns="http://www.w3.org/2000/svg">
-                <linearGradient class="s-xJBuHA073rTt" gradientUnits="userSpaceOnUse" y2="2" x2="0" y1="62" x1="0" id="b">
-                    <stop class="s-xJBuHA073rTt" stop-color="#973BED"></stop>
-                    <stop class="s-xJBuHA073rTt" stop-color="#007CFF" offset="1"></stop>
-                </linearGradient>
-                <linearGradient class="s-xJBuHA073rTt" gradientUnits="userSpaceOnUse" y2="0" x2="0" y1="64" x1="0" id="c">
-                    <stop class="s-xJBuHA073rTt" stop-color="#FFC800"></stop>
-                    <stop class="s-xJBuHA073rTt" stop-color="#F0F" offset="1"></stop>
-                    <animateTransform repeatCount="indefinite" keySplines=".42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1" keyTimes="0; 0.125; 0.25; 0.375; 0.5; 0.625; 0.75; 0.875; 1" dur="8s" values="0 32 32;-270 32 32;-270 32 32;-540 32 32;-540 32 32;-810 32 32;-810 32 32;-1080 32 32;-1080 32 32" type="rotate" attributeName="gradientTransform"></animateTransform>
-                </linearGradient>
-                <linearGradient class="s-xJBuHA073rTt" gradientUnits="userSpaceOnUse" y2="2" x2="0" y1="62" x1="0" id="d">
-                    <stop class="s-xJBuHA073rTt" stop-color="#00E0ED"></stop>
-                    <stop class="s-xJBuHA073rTt" stop-color="#00DA72" offset="1"></stop>
+
+        <!-- Y -->
+        <svg viewBox="0 0 64 64">
+            <defs>
+                <linearGradient id="g1">
+                    <stop offset="0%" stop-color="#973BED"/>
+                    <stop offset="100%" stop-color="#007CFF"/>
                 </linearGradient>
             </defs>
+
+            <path
+            d="M16 10 L32 30 L48 10 M32 30 V54"
+            fill="none"
+            stroke="url(#g1)"
+            stroke-width="7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="dash"/>
         </svg>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" height="64" width="64" class="inline-block">
-            <path stroke-linejoin="round" stroke-linecap="round" stroke-width="8" stroke="url(#b)" d="M 54.722656,3.9726563 A 2.0002,2.0002 0 0 0 54.941406,4 h 5.007813 C 58.955121,17.046124 49.099667,27.677057 36.121094,29.580078 a 2.0002,2.0002 0 0 0 -1.708985,1.978516 V 60 H 29.587891 V 31.558594 A 2.0002,2.0002 0 0 0 27.878906,29.580078 C 14.900333,27.677057 5.0448787,17.046124 4.0507812,4 H 9.28125 c 1.231666,11.63657 10.984383,20.554048 22.6875,20.734375 a 2.0002,2.0002 0 0 0 0.02344,0 c 11.806958,0.04283 21.70649,-9.003371 22.730469,-20.7617187 z" class="dash" id="y" pathLength="360"></path>
+
+        <!-- O -->
+        <svg viewBox="0 0 64 64">
+            <defs>
+                <linearGradient id="g2">
+                    <stop offset="0%" stop-color="#FFC800"/>
+                    <stop offset="100%" stop-color="#ff00ff"/>
+                </linearGradient>
+            </defs>
+
+            <circle
+            cx="32"
+            cy="32"
+            r="20"
+            fill="none"
+            stroke="url(#g2)"
+            stroke-width="7"
+            class="spin"/>
         </svg>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" style="--rotation-duration:0ms; --rotation-direction:normal;" viewBox="0 0 64 64" height="64" width="64" class="inline-block">
-            <path stroke-linejoin="round" stroke-linecap="round" stroke-width="10" stroke="url(#c)" d="M 32 32
-                m 0 -27
-                a 27 27 0 1 1 0 54
-                a 27 27 0 1 1 0 -54" class="spin" id="o" pathLength="360"></path>
+
+        <!-- U -->
+        <svg viewBox="0 0 64 64">
+            <defs>
+                <linearGradient id="g3">
+                    <stop offset="0%" stop-color="#00FFD5"/>
+                    <stop offset="100%" stop-color="#00A2FF"/>
+                </linearGradient>
+            </defs>
+
+            <path
+            d="M16 10 V40 C16 55 48 55 48 40 V10"
+            fill="none"
+            stroke="url(#g3)"
+            stroke-width="7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="dash"/>
         </svg>
-        
-        <div class="w-2"></div>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" style="--rotation-duration:0ms; --rotation-direction:normal;" viewBox="0 0 64 64" height="64" width="64" class="inline-block">
-            <path stroke-linejoin="round" stroke-linecap="round" stroke-width="8" stroke="url(#d)" d="M 4,4 h 4.6230469 v 25.919922 c -0.00276,11.916203 9.8364941,21.550422 21.7500001,21.296875 11.616666,-0.240651 21.014356,-9.63894 21.253906,-21.25586 a 2.0002,2.0002 0 0 0 0,-0.04102 V 4 H 56.25 v 25.919922 c 0,14.33873 -11.581192,25.919922 -25.919922,25.919922 a 2.0002,2.0002 0 0 0 -0.0293,0 C 15.812309,56.052941 3.998433,44.409961 4,29.919922 Z" class="dash" id="u" pathLength="360"></path>
-        </svg>
-        <!-- Newline wrapper for Raksha -->
-        <div class="w-full flex justify-center items-center gap-2 mt-4">
-            <!-- R -->
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" height="64" width="64" class="inline-block">
-                <path stroke-linejoin="round" stroke-linecap="round" stroke-width="8" stroke="url(#b)" d="M 18,56 V 8 h 16 a 12,12 0 0 1 0,24 H 18 M 30,32 L 46,56" class="dash" id="R" pathLength="360"></path>
-            </svg>
 
-            <!-- A -->
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" height="64" width="64" class="inline-block">
-                <path stroke-linejoin="round" stroke-linecap="round" stroke-width="8" stroke="url(#c)" d="M 14,56 L 32,8 L 50,56 M 21,38 H 43" class="dash" id="A1" pathLength="360"></path>
-            </svg>
-
-            <!-- K -->
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" height="64" width="64" class="inline-block">
-                <path stroke-linejoin="round" stroke-linecap="round" stroke-width="8" stroke="url(#d)" d="M 18,8 V 56 M 46,8 L 18,32 L 46,56" class="dash" id="K" pathLength="360"></path>
-            </svg>
-
-            <!-- S -->
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" height="64" width="64" class="inline-block">
-                <path stroke-linejoin="round" stroke-linecap="round" stroke-width="8" stroke="url(#b)" d="M 46,14 C 40,6 20,6 18,18 C 16,34 48,30 46,46 C 44,58 24,58 18,50" class="dash" id="S" pathLength="360"></path>
-            </svg>
-
-            <!-- H -->
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" height="64" width="64" class="inline-block">
-                <path stroke-linejoin="round" stroke-linecap="round" stroke-width="8" stroke="url(#c)" d="M 18,8 V 56 M 46,8 V 56 M 18,32 H 46" class="dash" id="H" pathLength="360"></path>
-            </svg>
-
-            <!-- A -->
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" height="64" width="64" class="inline-block">
-                <path stroke-linejoin="round" stroke-linecap="round" stroke-width="8" stroke="url(#d)" d="M 14,56 L 32,8 L 50,56 M 21,38 H 43" class="dash" id="A2" pathLength="360"></path>
-            </svg>
-        </div>
     </div>
+
+    <!-- RAKSHA -->
+    <div class="raksha">
+
+        <!-- R -->
+        <svg viewBox="0 0 64 64">
+            <defs>
+                <linearGradient id="b">
+                    <stop offset="0%" stop-color="#ff4d4d"/>
+                    <stop offset="100%" stop-color="#ffcc00"/>
+                </linearGradient>
+            </defs>
+
+            <path
+            d="M18,56 V8 h16 a12,12 0 0 1 0,24 H18 M30,32 L46,56"
+            fill="none"
+            stroke="url(#b)"
+            stroke-width="7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="dash"/>
+        </svg>
+
+        <!-- A -->
+        <svg viewBox="0 0 64 64">
+            <defs>
+                <linearGradient id="c">
+                    <stop offset="0%" stop-color="#00e5ff"/>
+                    <stop offset="100%" stop-color="#008cff"/>
+                </linearGradient>
+            </defs>
+
+            <path
+            d="M14,56 L32,8 L50,56 M21,38 H43"
+            fill="none"
+            stroke="url(#c)"
+            stroke-width="7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="dash"/>
+        </svg>
+
+        <!-- K -->
+        <svg viewBox="0 0 64 64">
+            <defs>
+                <linearGradient id="d">
+                    <stop offset="0%" stop-color="#ff00ff"/>
+                    <stop offset="100%" stop-color="#973BED"/>
+                </linearGradient>
+            </defs>
+
+            <path
+            d="M18,8 V56 M46,8 L18,32 L46,56"
+            fill="none"
+            stroke="url(#d)"
+            stroke-width="7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="dash"/>
+        </svg>
+
+        <!-- S -->
+        <svg viewBox="0 0 64 64">
+            <path
+            d="M46,14 C40,6 20,6 18,18 C16,34 48,30 46,46 C44,58 24,58 18,50"
+            fill="none"
+            stroke="url(#b)"
+            stroke-width="7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="dash"/>
+        </svg>
+
+        <!-- H -->
+        <svg viewBox="0 0 64 64">
+            <path
+            d="M18,8 V56 M46,8 V56 M18,32 H46"
+            fill="none"
+            stroke="url(#c)"
+            stroke-width="7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="dash"/>
+        </svg>
+
+        <!-- A -->
+        <svg viewBox="0 0 64 64">
+            <path
+            d="M14,56 L32,8 L50,56 M21,38 H43"
+            fill="none"
+            stroke="url(#d)"
+            stroke-width="7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="dash"/>
+        </svg>
+
+    </div>
+
+</div>
+
 </body>
 </html>
